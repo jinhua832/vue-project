@@ -11,6 +11,6 @@ export default {
 <style lang="less" scoped>
     .header{
         height: 50px;
-        background: pink;
+        background: #42A7FF;
     }
 </style>
