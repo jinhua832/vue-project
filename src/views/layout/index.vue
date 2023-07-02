@@ -2,11 +2,11 @@
     <div class="layout">
         <!-- 左侧导航 -->
         <div class="menu">
-            <Menu></Menu>
+            <Menu :isCollapse="isCollapse"></Menu>
         </div>
         <!-- 右侧内容 -->
-        <div class="content">
-            <Content></Content>
+        <div class="content" :class="{small:isCollapse}">
+            <Content @changeShow="changeShow" :isCollapse="isCollapse"></Content>
         </div>
     </div>
 </template>
@@ -17,6 +17,16 @@ export default {
     components:{
         Menu,
         Content
+    },
+    data(){
+        return{
+            isCollapse:false
+        }
+    },
+    methods:{
+        changeShow(){
+            this.isCollapse = !this.isCollapse
+        }
     }
 }
 </script>
@@ -24,7 +34,7 @@ export default {
     .layout{
         display: flex;
         .menu{
-            width: 200px;
+            // width: 200px;
             background: #112f50;
             position: fixed;
             top: 0;
@@ -33,7 +43,10 @@ export default {
         }
         .content{
             width: 100%;
-            margin-left: 200px;
+            padding-left: 200px;
+        }
+        .small{
+            padding-left: 64px;
         }
     }
 </style>

@@ -1,10 +1,13 @@
 <template lang="">
-    <el-menu
+    <div>
+        <el-menu
       default-active="2"
       class="el-menu-vertical-demo"
       background-color="#112f50"
       text-color="#fff"
-      active-text-color="#ffd04b">
+      active-text-color="#ffd04b"
+      :collapse="isCollapse"
+       >
       <el-menu-item>
         <span slot="title">首客生鲜采购系统</span>
       </el-menu-item>
@@ -38,11 +41,12 @@
         <i class="el-icon-setting"></i>
         <span slot="title">导航四</span>
       </el-menu-item>
-    </el-menu>
+        </el-menu>
+    </div>
 </template>
 <script>
 export default {
-    
+    props:['isCollapse']
 }
 </script>
 <style lang="less" scoped>
@@ -52,5 +56,9 @@ export default {
     /deep/ .is-active{
         background: #1e78bf!important;
         color: #fff!important;
+    }
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 200px;
+        min-height: 400px;
     }
 </style>

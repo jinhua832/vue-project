@@ -1,19 +1,38 @@
 <template lang="">
     <div>
         <!-- 顶部 -->
-        <Header></Header>
+        <div class="header">
+            <div class="open">
+                <span v-if="!isCollapse" class="iconfont icon-toggle-left" @click="changeMenu"></span>
+                <span v-else class="iconfont icon-toggle-right" @click="changeMenu"></span>
+            </div>
+        </div>
         <!-- 内容 -->
         <router-view></router-view>
     </div>
 </template>
 <script>
-import Header from './Header.vue'
+
 export default {
-    components:{
-        Header
+   props:['isCollapse'],
+   methods:{
+    changeMenu(){
+        this.$emit('changeShow')
     }
+   }
 }
 </script>
-<style lang="">
-    
+<style lang="less" scoped>
+.header{
+    height: 50px;
+    background: #42A7FF;
+    color: #fff;
+    line-height: 50px;
+    .open{
+        .iconfont{
+            font-size: 24px;
+            cursor: pointer;
+        }
+    }
+}
 </style>
