@@ -1,7 +1,7 @@
 <template lang="">
     <div>
         <el-menu
-        default-active="/"
+        :default-active="$route.path"
         class="el-menu-vertical-demo"
         background-color="#112f50"
         text-color="#fff"
