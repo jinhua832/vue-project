@@ -4,20 +4,20 @@
       <div class="header">
         <div class="item">
           总销售额
-          <div class='num'>726,520</div>
-          <div class="bottom">今日销售额：3,442</div>
+          <div class='num'>{{ totalInfo.saleTotal }}</div>
+          <div class="bottom">今日销售额：{{ totalInfo.sale }}</div>
         </div>
         <div class="item">总访问量
-          <div class='num'>836,175</div>
-           <div class="bottom">今日访问量：3,442</div>
+          <div class='num'>{{ totalInfo.viewsTotal }}</div>
+           <div class="bottom">今日访问量：{{ totalInfo.views }}</div>
         </div>
         <div class="item">总访问量
-          <div class='num'>126,878</div>
-           <div class="bottom">今日销售额：3,442</div>
+          <div class='num'>{{ totalInfo.collectTotal }}</div>
+           <div class="bottom">今日销售额：{{ totalInfo.collect }}</div>
         </div>
         <div class="item">总支付量
-          <div class='num'>6,402</div>
-           <div class="bottom">今日支付量：3,442</div>
+          <div class='num'>{{ totalInfo.payTotal }}</div>
+           <div class="bottom">今日支付量：{{ totalInfo.pay }}</div>
         </div>
       </div>
   
@@ -87,7 +87,21 @@
   
   <script>
   export default {
-  
+      data(){
+        return{
+          totalInfo:{},//首页数据统计
+        }
+      },
+      created(){
+        this.totalInfo()
+      },
+      methods:{
+        async totalInfo(){
+          let res = await this.$api.totalInfo()
+          console.log(res.data.data.list);
+          this.totalInfo = res.data.data.list
+        }
+      }
   }
   </script>
   
